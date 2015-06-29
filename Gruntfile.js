@@ -8,12 +8,12 @@ module.exports = function(grunt) {
             main: {
                 options: {
                     sourceMap: true,
-                    sourceMapFilename: "web/dist/css/bootstrap-theme-custom.min.css.map",
-                    sourceMapURL: '/web/dist/css/bootstrap-theme-custom.min.css.map'
+                    sourceMapFilename: "web/dist/css/bootstrap-theme.css.map",
+                    sourceMapURL: '/web/dist/css/bootstrap-theme.css.map'
                 },
                 // Preprocess css styles
                 files: {
-                    "web/dist/css/bootstrap-theme-custom.min.css": "src/less/bootstrap-custom.less"
+                    "web/dist/css/bootstrap-theme.css": "src/less/bootstrap.less"
                 }
             }
         },
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         },
 
         // Empties dist directory
-        //clean: ["web/dist"],
+        clean: ["web/dist"],
 
         watch: {
             less_main: {
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
     });
 
     // Load the plugin that provides the "uglify" task.
-    //grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     //grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -126,7 +126,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Task(s).
-    grunt.registerTask('default', ['concat', 'uglify', 'less', 'copy']);
+    grunt.registerTask('default', ['clean', 'concat', 'uglify', 'less', 'copy']);
 
-    grunt.registerTask('server', ['connect:server']);
+    //grunt.registerTask('server', ['connect:server']);
 };
