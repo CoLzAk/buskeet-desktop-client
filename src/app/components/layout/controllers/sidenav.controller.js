@@ -3,12 +3,12 @@
 
     angular
         .module('myApp')
-        .controller('ContentController', contentController)
+        .controller('SideNavController', sideNavController)
     ;
 
-    contentController.$inject = ['$scope', '$mdUtil'];
+    sideNavController.$inject = ['$scope', '$mdUtil'];
 
-    function contentController($scope, $mdUtil) {
+    function sideNavController($scope, $mdUtil) {
         $scope.toggleLeft = buildToggler('left');
         /**
          * Build handler to open/close a SideNav; when animation finishes
@@ -31,6 +31,6 @@
                     $log.debug("close LEFT is done");
                 });
         };
-        console.log('content');
+        console.log('sideNav');
     }
 })();

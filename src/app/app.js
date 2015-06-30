@@ -4,9 +4,10 @@
     // Declare app level module which depends on filters, and services
     angular
         .module('myApp', [
-            //'ngAnimate',
+            'ngAnimate',
             'ngResource',
-            'ui.bootstrap',
+            'ngMaterial',
+            //'ui.bootstrap',
             'ui.router',
             'angular-jwt',
             'http-auth-interceptor',
@@ -19,10 +20,14 @@
         .run(run)
     ;
 
-    config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    config.$inject = ['$stateProvider', '$urlRouterProvider', '$mdThemingProvider'];
     run.inject = [];
 
-    function config($stateProvider, $urlRouterProvider) {
+    function config($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+        $mdThemingProvider
+            .theme('default')
+            .primaryPalette('blue');
+
         $stateProvider
             .state('app', {
                 views: {

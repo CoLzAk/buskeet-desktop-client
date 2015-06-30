@@ -6,9 +6,12 @@
         .controller('HomeController', homeController)
     ;
 
-    homeController.$inject = [];
+    homeController.$inject = ['$scope'];
 
-    function homeController() {
+    function homeController($scope) {
         console.log('home');
+        $scope.toggleSidenav = function(menuId) {
+            $mdSidenav(menuId).toggle();
+        };
     }
 })();
