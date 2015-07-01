@@ -10,8 +10,5 @@
 
     function homeController($scope) {
         console.log('home');
-        $scope.toggleSidenav = function(menuId) {
-            $mdSidenav(menuId).toggle();
-        };
     }
 })();
