@@ -21,15 +21,12 @@
     ;
 
     config.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider', 'jwtInterceptorProvider'];
-    run.inject = [];
+    run.inject = ['$rootScope', 'UserFactory', '$state'];
 
     function config($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
-        jwtInterceptorProvider.tokenGetter = function() {
-            return localStorage.getItem('jwt');
+        jwtInterceptorProvider.tokenGetter = function(UserFactory) {
+            return UserFactory.get('token');
         };
-        //jwtInterceptorProvider.tokenGetter = ['store', function(store) {
-        //    return store.get('jwt');
-        //}];
 
         $httpProvider.interceptors.push('jwtInterceptor');
 
@@ -60,30 +57,35 @@
                     }
                 }
             })
+
+            .state('home', {
+                url: '/',
+                views: {
+                    home: {
+                        templateUrl: '/dist/app/components/home/views/home.html',
+                        controller: 'HomeController',
+                        controllerAs: 'home'
+                    }
+                }
+            })
         ;
 
-        if (!!localStorage.getItem('jwt')) {
-            $stateProvider
-                .state('app.home', {
-                    url: '/',
-                    templateUrl: '/dist/app/components/home/views/home.html',
-                    controller: 'HomeController',
-                    controllerAs: 'home'
-                })
-            ;
-        } else {
-            $stateProvider
-                .state('app.home', {
-                    url: '/',
-                    templateUrl: '/dist/app/components/home/views/landing.html',
-                    controller: 'LandingController',
-                    controllerAs: 'landing'
-                })
-            ;
-        }
         $urlRouterProvider.otherwise('/');
     }
 
-    function run() {
+    function run($rootScope, UserFactory, $state) {
+        $rootScope._app = {
+            user: {
+                isAuthenticated: function() {
+                    return UserFactory.isAuthenticated();
+                }
+            }
+        };
+
+        $rootScope.$on("$stateChangeSuccess", function (event, currentState, previousState) {
+            if (!UserFactory.isAuthenticated()) {
+                $state.go('home');
+            }
+        });
     }
 })();

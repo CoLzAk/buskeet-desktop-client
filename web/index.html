@@ -17,16 +17,17 @@
 </head>
 
 <body ng-app="myApp">
+    <!-- if not logged in -->
+    <div ui-view="home"></div>
 
+    <!-- if logged in -->
     <header ui-view="header"></header>
-
     <div class="container-fluid">
         <div class="row">
-            <div ui-view="sidenav" class="col-lg-3 col-md-4 hidden-sm hidden-xs"></div>
-            <div ui-view="content" class="col-lg-6 col-md-8"></div>
+            <div ui-view="sidenav" class="col-lg-4 col-md-4 hidden-sm hidden-xs"></div>
+            <div ui-view="content" class="col-lg-8 col-md-8"></div>
         </div>
     </div>
-
     <footer ui-view="footer"></footer>
 
     <!-- Latest compiled and minified JavaScript -->
