@@ -1,12 +1,10 @@
 (function() {
     'use strict';
 
-    // Declare app level module which depends on filters, and services
     angular
         .module('myApp', [
             'ngAnimate',
             'ngResource',
-            //'ngMaterial',
             'ui.bootstrap',
             'ui.router',
             'angular-jwt',
@@ -38,15 +36,12 @@
                         controller: 'HeaderController',
                         controllerAs: 'header'
                     },
-                    sidenav: {
-                        templateUrl: '/dist/app/components/layout/views/sidenav.html',
-                        controller: 'SideNavController',
-                        controllerAs: 'sidenav'
-                    },
+                    // sidenav: {
+                    //     templateUrl: '/dist/app/components/layout/views/sidenav.html',
+                    //     controller: 'SideNavController',
+                    //     controllerAs: 'sidenav'
+                    // },
                     content: {
-                        //templateUrl: '/dist/app/components/layout/views/content.html',
-                        //controller: 'ContentController',
-                        //controllerAs: 'content',
                         template: '<ui-view/>',
                         abstract: true
                     },
@@ -61,12 +56,25 @@
             .state('home', {
                 url: '/',
                 views: {
-                    home: {
+                    content: {
                         templateUrl: '/dist/app/components/home/views/home.html',
                         controller: 'HomeController',
                         controllerAs: 'home'
                     }
                 }
+            })
+
+            .state('app.login', {
+                url: '/login',
+                templateUrl: '/dist/app/components/user/views/login.html',
+                controller: 'LoginController',
+                controllerAs: 'login'
+            })
+            .state('app.register', {
+                url: '/register',
+                templateUrl: '/dist/app/components/user/views/register.html',
+                controller: 'RegisterController',
+                controllerAs: 'register'
             })
         ;
 
@@ -82,10 +90,10 @@
             }
         };
 
-        $rootScope.$on("$stateChangeSuccess", function (event, currentState, previousState) {
-            if (!UserFactory.isAuthenticated()) {
-                $state.go('home');
-            }
-        });
+        // $rootScope.$on("$stateChangeSuccess", function (event, currentState, previousState) {
+        //     if (!UserFactory.isAuthenticated()) {
+        //         $state.go('home');
+        //     }
+        // });
     }
 })();
