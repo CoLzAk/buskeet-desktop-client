@@ -16,6 +16,11 @@
         ])
         .config(config)
         .run(run)
+        .constant('API', {
+            PROTOCOL: 'http',
+            URL: 'api.buskeet.dev',
+            DEBUG: true
+        })
     ;
 
     config.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider', 'jwtInterceptorProvider'];

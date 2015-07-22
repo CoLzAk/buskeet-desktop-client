@@ -1,0 +1,26 @@
+{
+    "LOCALE": "fr",
+    "DEBUG": true,
+
+    "API": {
+        "PROTOCOL": "http",
+        "URL": "api.buskeet.com",
+        "DEBUG": true
+    },
+
+    "SOCIAL_APPLICATION": {
+        "GOOGLE_ID": "460213878775-lu6v323aps9i4vg9okue5jfgk6ojo9qf.apps.googleusercontent.com",
+        "FACEBOOK_ID": "379650452207711"
+    },
+
+    "AUTH_EVENTS": {
+        "LOGIN_SUCCESS": "auth.login.success",
+        "LOGIN_FAILED": "auth.login.failed",
+        "FACEBOOK_LOGIN_FAILED_NO_EMAIL": "auth.facebook.login.failed.without.email",
+        "GOOGLE_LOGIN_FAILED_NO_EMAIL": "auth.google.login.failed.without.email"
+    },
+
+    "angularMomentConfig": {
+        "timezone": "Europe/Paris"
+    }
+}
