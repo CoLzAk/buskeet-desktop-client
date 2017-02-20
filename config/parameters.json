@@ -9,8 +9,8 @@
     },
 
     "SOCIAL_APPLICATION": {
-        "GOOGLE_ID": "460213878775-lu6v323aps9i4vg9okue5jfgk6ojo9qf.apps.googleusercontent.com",
-        "FACEBOOK_ID": "379650452207711"
+        "GOOGLE_ID": "",
+        "FACEBOOK_ID": ""
     },
 
     "AUTH_EVENTS": {
